@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CategorieViewDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<partial name="_Notification" />
+
+<div class="container p-3">
+    @*Cree un conteneur et gere le positionnement*@
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Category List </h2>
+        </div>
+        <div class="col-6 text-end">     @*Text-end décale le bouton a droite (Fin de texte)*@
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-pencil-fill"></i> &nbsp; Créer Nouvelle Catégorie
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Category Name
+                </th>
+                <th>
+                    Display Order
+                </th>
+                <th>
+                  
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categorie in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @categorie.Name
+                    </td>
+                    <td width="20%">
+                        @categorie.DisplayOrder
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@categorie.Id" class="btn btn-primary mx-2"><i class="bi bi-input-cursor-text"></i> Edit</a>     @*Pour chaque objet de la liste, creer un bouton edition (Permet de passer la variable Id)*@
+                        </div>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@categorie.Id" class="btn btn-primary mx-2"><i class="bi bi-trash3-fill"></i> Delete</a>     @*Pour chaque objet de la liste, creer un bouton edition (Permet de passer la variable Id)*@
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+

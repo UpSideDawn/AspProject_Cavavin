@@ -1,0 +1,21 @@
+﻿@if (TempData["Success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"> </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    //<h2>@TempData["Success"]</h2>          @*Affiche des données temporaires qui ne restent qu'apres avoir effectué une action (Creer,Modifier,Supprimer..)*@
+
+    <script type="text/javascript">
+        toastr.success('@TempData["success"]');
+    </script>
+}
+@if (TempData["Error"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"> </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    //<h2>@TempData["Error"]</h2>          @*Affiche des données temporaires qui ne restent qu'apres avoir effectué une action (Creer,Modifier,Supprimer..)*@
+
+    <script type="text/javascript">
+        toastr.error('@TempData["error"]');
+    </script>
+}
